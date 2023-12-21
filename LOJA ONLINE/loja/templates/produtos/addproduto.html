@@ -1,0 +1,59 @@
+{% extends 'layouts.html' %}
+
+{% block content %}
+
+  <div class="container mt-5">
+    <div class="card shadow-sm">
+      <h5 class="card-header bg-success text-white text-center py-3">Cadastro de Produtos</h5>
+      <div class="card-body">
+        {% from "_formularioajuda.html" import render_field %}
+
+        <form method="post" enctype="multipart/form-data">
+          <div class="row g-3">
+            <div class="col-md-6">
+              <div class="mb-3">
+                {{ form.nome.label }} {{ form.nome(class="form-control", placeholder="Nome do Produto") }}
+              </div>
+              <div class="mb-3">
+              {{ form.preco.label }} {{ form.preco(class="form-control", placeholder="Preço do Produto") }}
+              </div>
+              <div class="mb-3">
+              {{ form.estoque.label }} {{ form.estoque(class="form-control", placeholder="Estoque do Produto") }}
+              </div>
+
+              <div class="mb-3">
+                <label for="marca">Adicionar uma marca: </label>
+                <select name="marca" id="marca" class="form-control" required>
+                  <option value="">Selecione uma marca</option>
+                  {% for marca in marcas %}
+                  <option value="{{ marca }}">{{ marca.nome }}</option>
+                  {% endfor %}
+                </select>
+              </div>
+
+              <div class="mb-3">
+                <label for="categoria">Adicione uma categoria: </label>
+                <select name="categoria" id="categoria" class="form-control" required>
+                  <option value="">Selecione uma categoria</option>
+                  {% for categoria in categorias %}
+                  <option value="{{ categoria }}">{{ categoria.nome }}</option>
+                  {% endfor %}
+                </select> 
+              </div>
+
+              <div class="mb-3">
+                {{ form.descricao.label }} {{ form.descricao(class="form-control", placeholder="Descrição do Produto", rows="10") }}
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            {{ form.image1.label }} {{ form.image1(class="form-control", accept="image/jpeg, image/png, image/gif", placeholder="1° Imagem") }}
+            {{ form.image2.label }} {{ form.image2(class="form-control", accept="image/jpeg, image/png, image/gif", placeholder="2° Imagem") }}
+            {{ form.image3.label }} {{ form.image3(class="form-control", accept="image/jpeg, image/png, image/gif", placeholder="3° Imagem") }}
+          </div>
+
+          <div class="text-center">
+            <button type="submit" class="btn btn-success btn-lg px-5">Cadastrar</button>
+
+{% endblock content %}

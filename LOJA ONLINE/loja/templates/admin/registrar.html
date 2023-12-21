@@ -1,0 +1,47 @@
+{% extends "layouts.html" %}
+
+{% block content %}
+<div class="container mt-5">
+  <div class="card shadow-sm">
+    <h5 class="card-header bg-success text-white text-center py-3">Cadastro de Cliente</h5>
+    <div class="card-body">
+      {% from "_formularioajuda.html" import render_field %}
+
+      <form method="post" enctype="multipart/form-data">
+        <div class="row g-3">
+          <div class="col-md-6">
+            <div class="mb-3">
+              {{ render_field(form.nome) }}
+            </div>
+            <div class="mb-3">
+              {{ render_field(form.cpf) }}   
+            </div>
+            <div class="mb-3">
+              {{ render_field(form.endereco) }} 
+            </div>
+            <div class="mb-3">
+              {{ render_field(form.telefone) }} 
+            </div>
+            <div class="mb-3">
+              {{ render_field(form.email) }}
+            </div>
+            <div class="mb-3">
+              {{ render_field(form.senha) }}
+            </div>
+            <div class="mb-3">
+              {{ render_field(form.confirmacao) }}
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <input type="file" name="Foto" class="form-control">
+        </div>
+        <div class="text-center">
+          <input type="submit" value="Registrar" class="btn btn-success btn-lg px-5">
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock content %}
